@@ -304,7 +304,7 @@ const addProductHandler = () => {
   }, 4000);
 
   localStorage.setItem("products", JSON.stringify(products));
-  location.href = "../Shop4U/ui/admin_index.html";
+  location.href = "..ui/admin_index.html";
 };
 
 //USER LOG OUT HANDLING
@@ -363,7 +363,7 @@ const deleteProductHandler = (id) => {
 
 //EDITING PRODUCTS IN ADMIN PAGE
 const editProductHandler = (id) => {
-  location.href = `/Shop4U/ui/add_product.html?id=${id}`;
+  location.href = `ui/add_product.html?id=${id}`;
 };
 
 //POPULATING THE PRODUCT IN ADD PRODUCT PAGE
@@ -413,7 +413,7 @@ const addToCartHandler = (id) => {
   const product = products.find((product) => product.id === parseInt(id));
 
   if (!sessionStorage.getItem("userId")) {
-    location.href = "/Shop4U/ui/login.html";
+    location.href = "ui/login.html";
   } else {
     let userId = parseInt(sessionStorage.getItem("userId"));
     let cart = [];
@@ -458,7 +458,7 @@ const updateCartCount = () => {
         cartCountRef.innerText = `Cart - ${cartCount}`;
       } else cartCountRef.innerText = `Cart`;
     }
-  } else location.href = "/Shop4U/ui/login.html";
+  } else location.href = "ui/login.html";
 };
 
 //UPDATING CART BODY WHILE ADDING PRODUCTS
@@ -499,7 +499,7 @@ const cartPageLoad = () => {
       cartBodyRef.innerHTML = body;
       totalRef.innerText = `Total - ₹ ${total}/-Only`;
     } else {
-      location.href = "/Shop4U/ui/login.html";
+      location.href = "ui/login.html";
     }
   }
 };
@@ -536,12 +536,12 @@ const checkOutHandler = () => {
       localStorage.setItem("cart", JSON.stringify(otherUserCart));
       localStorage.setItem("orders", JSON.stringify(orders));
       updateCartCount();
-      location.href = "/Shop4U/ui/product_detail.html";
+      location.href = "ui/product_detail.html";
     } else {
-      location.href = "/Shop4U/ui/product_detail.html";
+      location.href = "ui/product_detail.html";
     }
   } else {
-    location.href = "/Shop4U/ui/login.html";
+    location.href = "ui/login.html";
   }
 };
 
