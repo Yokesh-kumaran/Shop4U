@@ -114,11 +114,11 @@ window.addEventListener("load", () => {
     localStorage.setItem("users", JSON.stringify(initialUsers));
   }
 
-  if (location.pathname === "/Shop4U/ui/admin_index.html") {
+  if (location.pathname === "/Shop4U/admin_index.html") {
     adminHomePageLoad();
   }
 
-  if (location.pathname === "/Shop4U/ui/add_product.html") {
+  if (location.pathname === "/Shop4U/add_product.html") {
     let params = new URL(document.location).searchParams;
     let productId = params.get("id");
     if (productId) {
@@ -130,27 +130,27 @@ window.addEventListener("load", () => {
     }
   }
 
-  if (location.pathname === "/Shop4U/ui/product_detail.html") {
+  if (location.pathname === "/Shop4U/product_detail.html") {
     loadUserPage();
   }
 
-  if (location.pathname === "/Shop4U/ui/user_cart.html") {
+  if (location.pathname === "/Shop4U/user_cart.html") {
     cartPageLoad();
   }
 
   if (
-    location.pathname === "/Shop4U/ui/product_detail.html" ||
-    location.pathname === "/Shop4U/ui/user_orders.html" ||
-    location.pathname === "/Shop4U/ui/user_cart.html"
+    location.pathname === "/Shop4U/product_detail.html" ||
+    location.pathname === "/Shop4U/user_orders.html" ||
+    location.pathname === "/Shop4U/user_cart.html"
   ) {
     updateCartCount();
   }
 
-  if (location.pathname === "/Shop4U/ui/user_orders.html") {
+  if (location.pathname === "/Shop4U/user_orders.html") {
     orderPageLoad();
   }
 
-  if (location.pathname === "/Shop4U/ui/admin_orders.html") {
+  if (location.pathname === "/Shop4U/admin_orders.html") {
     adminOrderPageLoad();
   }
 });
@@ -199,9 +199,9 @@ const signInHandler = () => {
           emailRef.value === "sanjay@admin.com" &&
           passwordRef.value === "sanjay"
         ) {
-          location.replace("/Shop4U/ui/admin_index.html");
+          location.replace("/Shop4U/admin_index.html");
         } else {
-          location.replace("/Shop4U/ui/product_detail.html");
+          location.replace("/Shop4U/product_detail.html");
         }
       }
     } else {
@@ -304,19 +304,19 @@ const addProductHandler = () => {
   }, 4000);
 
   localStorage.setItem("products", JSON.stringify(products));
-  location.href = "..ui/admin_index.html";
+  location.href = "/Shop4U/admin_index.html";
 };
 
 //USER LOG OUT HANDLING
 const userLogOutHandler = () => {
   const state = { page: "login" };
   const title = "Login Page";
-  const url = "/Shop4U/ui/login.html";
+  const url = "/Shop4U/login.html";
   history.replaceState(state, title, url);
 
   event.preventDefault();
 
-  location.replace("/Shop4U/ui/login.html");
+  location.replace("/Shop4U/login.html");
   console.log("success");
 };
 
@@ -363,7 +363,7 @@ const deleteProductHandler = (id) => {
 
 //EDITING PRODUCTS IN ADMIN PAGE
 const editProductHandler = (id) => {
-  location.href = `ui/add_product.html?id=${id}`;
+  location.href = `/Shop4U/add_product.html?id=${id}`;
 };
 
 //POPULATING THE PRODUCT IN ADD PRODUCT PAGE
@@ -413,7 +413,7 @@ const addToCartHandler = (id) => {
   const product = products.find((product) => product.id === parseInt(id));
 
   if (!sessionStorage.getItem("userId")) {
-    location.href = "ui/login.html";
+    location.href = "/Shop4U/login.html";
   } else {
     let userId = parseInt(sessionStorage.getItem("userId"));
     let cart = [];
@@ -458,7 +458,7 @@ const updateCartCount = () => {
         cartCountRef.innerText = `Cart - ${cartCount}`;
       } else cartCountRef.innerText = `Cart`;
     }
-  } else location.href = "ui/login.html";
+  } else location.href = "/Shop4U/login.html";
 };
 
 //UPDATING CART BODY WHILE ADDING PRODUCTS
@@ -499,7 +499,7 @@ const cartPageLoad = () => {
       cartBodyRef.innerHTML = body;
       totalRef.innerText = `Total - ₹ ${total}/-Only`;
     } else {
-      location.href = "ui/login.html";
+      location.href = "/Shop4U/login.html";
     }
   }
 };
@@ -509,7 +509,7 @@ deleteCartBodyProducts = (id) => {
   const products = JSON.parse(localStorage.getItem("cart"));
   const filteredProducts = products.filter((product) => product.id !== id);
   localStorage.setItem("cart", JSON.stringify(filteredProducts));
-  location.reload("/Shop4U/ui/user_cart.html");
+  location.reload("/Shop4U/user_cart.html");
   cartPageLoad();
 };
 
@@ -536,12 +536,12 @@ const checkOutHandler = () => {
       localStorage.setItem("cart", JSON.stringify(otherUserCart));
       localStorage.setItem("orders", JSON.stringify(orders));
       updateCartCount();
-      location.href = "ui/product_detail.html";
+      location.href = "/Shop4U/product_detail.html";
     } else {
-      location.href = "ui/product_detail.html";
+      location.href = "/Shop4U/product_detail.html";
     }
   } else {
-    location.href = "ui/login.html";
+    location.href = "/Shop4U/login.html";
   }
 };
 
@@ -578,10 +578,10 @@ const orderPageLoad = () => {
       }
       orderTableRef.innerHTML = body;
     } else {
-      location.href = "/Shop4U/ui/product_detail.html";
+      location.href = "/Shop4U/product_detail.html";
     }
   } else {
-    location.href = "/Shop4U/ui/login.html";
+    location.href = "/Shop4U/login.html";
   }
 };
 
@@ -643,9 +643,9 @@ const adminOrderPageLoad = () => {
         });
       }
     } else {
-      location.href = "/Shop4U/ui/index.html";
+      location.href = "/Shop4U/index.html";
     }
   } else {
-    location.href = "/Shop4U/ui/login.html";
+    location.href = "/Shop4U/login.html";
   }
 };
