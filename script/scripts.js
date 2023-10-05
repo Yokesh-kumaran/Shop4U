@@ -644,7 +644,7 @@ const adminOrderPageLoad = () => {
         });
       }
     } else {
-      location.href = "/Shop4U/product_detail.html";
+      location.href = "/Shop4U/admin_orders.html";
     }
   } else {
     location.href = "/Shop4U/index.html";
