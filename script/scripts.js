@@ -107,10 +107,6 @@ let users = [];
 window.addEventListener("load", () => {
   //LOADING PRODUCTS
 
-  if (location.pathname === "/Shop4U/") {
-    location.replace("/Shop4U/login.html");
-  }
-
   if (!localStorage.getItem("products")) {
     localStorage.setItem("products", JSON.stringify(initialProducts));
   }
@@ -316,12 +312,12 @@ const addProductHandler = () => {
 const userLogOutHandler = () => {
   const state = { page: "login" };
   const title = "Login Page";
-  const url = "/Shop4U/login.html";
+  const url = "/Shop4U/index.html";
   history.replaceState(state, title, url);
 
   event.preventDefault();
 
-  location.replace("/Shop4U/login.html");
+  location.replace("/Shop4U/index.html");
   console.log("success");
 };
 
@@ -504,7 +500,7 @@ const cartPageLoad = () => {
       cartBodyRef.innerHTML = body;
       totalRef.innerText = `Total - ₹ ${total}/-Only`;
     } else {
-      location.href = "/Shop4U/login.html";
+      location.href = "/Shop4U/index.html";
     }
   }
 };
@@ -546,7 +542,7 @@ const checkOutHandler = () => {
       location.href = "/Shop4U/product_detail.html";
     }
   } else {
-    location.href = "/Shop4U/login.html";
+    location.href = "/Shop4U/index.html";
   }
 };
 
@@ -586,7 +582,7 @@ const orderPageLoad = () => {
       location.href = "/Shop4U/product_detail.html";
     }
   } else {
-    location.href = "/Shop4U/login.html";
+    location.href = "/Shop4U/index.html";
   }
 };
 
@@ -648,9 +644,9 @@ const adminOrderPageLoad = () => {
         });
       }
     } else {
-      location.href = "/Shop4U/index.html";
+      location.href = "/Shop4U/product_detail.html";
     }
   } else {
-    location.href = "/Shop4U/login.html";
+    location.href = "/Shop4U/index.html";
   }
 };
