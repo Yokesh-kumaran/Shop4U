@@ -106,6 +106,11 @@ let users = [];
 //EVENT LISTENER
 window.addEventListener("load", () => {
   //LOADING PRODUCTS
+
+  if (location.pathname === "/Shop4U/") {
+    location.replace("/Shop4U/login.html");
+  }
+
   if (!localStorage.getItem("products")) {
     localStorage.setItem("products", JSON.stringify(initialProducts));
   }
